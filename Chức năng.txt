@@ -1,0 +1,19 @@
+- Người dùng:
+    a) Bình thường
+	+ Đăng kí/ Đăng nhập
+	+ Tìm nhạc
+	+ Nghe nhạc
+	+ Tạo playlist
+	+ Quản lí tài khoản cá nhân
+	+ Nâng cấp tài khoản
+    b) VIP
+	+ Quản lí bài hát cá nhân (Thêm, sửa, xóa)
+	+ Quản lí album cá nhân (Thêm, sửa, xóa)
+	+ Thống kê lượt nghe
+	+ Thống kê người theo dõi
+
+- Admin:
+	+ Quản lí tài khoản người dùng
+	+ Thống kê bài hát
+	+ Quản lí bài hát (Kiểm duyệt, xóa)
+	+ Thống kê doanh thu
