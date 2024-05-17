@@ -7,7 +7,7 @@ import {motion} from 'framer-motion'
 import FilterButton from './FilterButton'
 import { filterByCate, filterByLang } from "../../utils/supportFuntions"
 import { useStateValue } from '../../context/StateProvider'
-import { getAllAlbums, getAllArtists, getAllSongs, saveNewSong } from '../../api'
+import { getAllAlbums, getAllArtists, getAllSongs, getAllUsers, saveNewSong } from '../../api'
 import { actionType } from '../../context/reducer'
 import FileLoader from './FileLoader'
 import FileUploader from './FileUploader'
@@ -21,15 +21,15 @@ const NewSong = () => {
     const [audioFile, setAudioFile] = useState(null)
     const [songName, setSongName] = useState("")
 
-    const [{allArtists, allSongs, allAlbums, userFilter, albumFilter, languageFilter, categoryFilter, user, arlertType}
+    const [{allUsers, allArtists, allSongs, allAlbums, userFilter, albumFilter, languageFilter, categoryFilter, user, arlertType}
             , dispatch] = useStateValue()
 
     useEffect(() => {
-        if(!allArtists) {
-            getAllArtists().then((data) => {
+        if(!allUsers) {
+            getAllUsers().then((data) => {
                 dispatch ({
-                    type: actionType.SET_ALL_ARTISTS,
-                    allArtists: data.artist
+                    type: actionType.SET_ALL_USERS,
+                    allUsers: data.data,
                 })
             })
         }
@@ -38,7 +38,7 @@ const NewSong = () => {
             getAllAlbums().then((data) => {
                 dispatch ({
                     type: actionType.SET_ALL_ALBUMS,
-                    allAlbums: data.album
+                    allAlbums: data.album,
                 })
             })
         }
@@ -92,7 +92,19 @@ const NewSong = () => {
             setIsImageUploading(true)
             setIsAudioUploading(true)
 
-            const data = {
+            const data = user?.user?.role === "admin" 
+            ? {
+                name: songName,
+                imageURL: songImageCover,
+                songURL: audioFile,
+                albumId: albumFilter ? albumFilter._id : "",
+                albumName: albumFilter ? albumFilter.name : "",
+                artistId: userFilter._id,
+                artistName: userFilter.name,
+                language: languageFilter,
+                category: categoryFilter,
+            }
+            : {
                 name: songName,
                 imageURL: songImageCover,
                 songURL: audioFile,
@@ -202,7 +214,7 @@ const NewSong = () => {
             />
 
             <div className='flex w-full items-center justify-evenly gap-4 flex-wrap'>
-                <FilterButton filterData={allArtists} flag={"User"} />
+                <FilterButton filterData={allUsers} flag={"User"} />
                 <FilterButton filterData={allAlbums} flag={"Album"} />
                 <FilterButton filterData={filterByLang} flag={"Language"} />
                 <FilterButton filterData={filterByCate} flag={"Category"} />

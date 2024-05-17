@@ -15,7 +15,7 @@ router.post("/save", async (req, res) => {
         artistName: req.body.artistName,
         language: req.body.language,
         category: req.body.category,
-        viewCount: req.body.viewCount,
+        viewCount: 0,
     })
 
     try {

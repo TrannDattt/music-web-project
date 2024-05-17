@@ -9,7 +9,7 @@ router.post("/save", async (req, res) => {
         artistId: req.body.artistId,
         artistName: req.body.artistName,
         language: req.body.language,
-        viewCount: req.body.viewCount,
+        viewCount: 0,
     })
 
     try {

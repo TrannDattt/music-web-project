@@ -98,8 +98,8 @@ export const changeUserRole = async (userId, role) => {
 
 export const saveNewUser = async (data) => {
     try {
-        const res = axios.post(`${baseURL}/api/users/save`, {...data})
-        return (await res).data.savedSong
+        const res = await axios.post(`${baseURL}/api/users/save`, {...data})
+        return res.data.savedSong
     } catch (error) {
         return null
     }
