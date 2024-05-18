@@ -144,9 +144,11 @@ const SongCard = ({data, index, type}) => {
         {data.name.length > 25 ? `${data.name.slice(0, 25)}...` : data.name}
 
         {(type === "song" && data.albumName) && (
-          <NavLink to={"/not-found"} className={`hover:underline`}>
-            {data.albumName.length > 25 ? `${data.albumName.slice(0, 25)}...` : data.albumName}
-          </NavLink>
+          <span>{" - "}
+            <NavLink to={"/not-found"} className={`hover:underline text-sm`}>
+              {data.albumName.length > 25 ? `${data.albumName.slice(0, 25)}...` : `${data.albumName}`}
+            </NavLink>
+          </span>
         )}
         
         <NavLink to={"/not-found"} className={`hover:underline`}>
