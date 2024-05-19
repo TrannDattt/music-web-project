@@ -96,6 +96,15 @@ export const changeUserRole = async (userId, role) => {
     }
 }
 
+export const getUserById = async (userId) => {
+    try {
+        const res = await axios.put(`${baseURL}/api/users/getOne/${userId}`)
+        return res
+    } catch (error) {
+        return null
+    }
+}
+
 export const saveNewUser = async (data) => {
     try {
         const res = await axios.post(`${baseURL}/api/users/save`, {...data})
@@ -136,6 +145,15 @@ export const saveNewAlbum = async (data) => {
     try {
         const res = axios.post(`${baseURL}/api/albums/save`, {...data})
         return (await res).data.savedAlbum
+    } catch (error) {
+        return null
+    }
+}
+
+export const getAlbumById = async (id) => {
+    try {
+        const res = await axios.put(`${baseURL}/api/albums/getOne/${id}`)
+        return res
     } catch (error) {
         return null
     }

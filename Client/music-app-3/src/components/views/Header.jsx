@@ -27,6 +27,11 @@ const Header = () => {
             isSongPlaying: false,
         })
 
+        dispatch({
+            type: actionType.SET_IS_ALBUM_OPENING,
+            isAlbumOpening: false,
+        })
+
         const firebaseAuth = getAuth(app)
         setPersistence(firebaseAuth, browserLocalPersistence).then(() => {
             firebaseAuth.signOut().then(() => {

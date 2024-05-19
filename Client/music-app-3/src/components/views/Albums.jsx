@@ -5,6 +5,8 @@ import { isActiveStyles, isNotActiveStyles } from '../../utils/styles'
 import AlbumsHome from './AlbumsHome'
 import AlbumsHot from './AlbumsHot'
 import AlbumsNewRelease from './AlbumsNewRelease'
+import { motion } from 'framer-motion'
+import { useStateValue } from '../../context/StateProvider'
 
 const Albums = () => {
   return (

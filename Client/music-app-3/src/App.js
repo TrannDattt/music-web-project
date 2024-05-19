@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import {Route, Routes, useNavigate} from "react-router-dom"
-import { Login, Home, Dashboard, MusicPlayer, Musics, ContactUs, Premium, NotFound, Albums } from "./components/js"
+import { Login, Home, Dashboard, MusicPlayer, Musics, ContactUs, Premium, NotFound, Albums, AlbumPlayer } from "./components/js"
 import { app } from "./config/firebase.config"
 import { getAuth } from "firebase/auth";
 
@@ -13,7 +13,7 @@ const App = () => {
     const firebaseAuth = getAuth(app)
     const navigate = useNavigate()
 
-    const [{user, isSongPlaying}, dispatch] = useStateValue()
+    const [{user, isSongPlaying, isAlbumOpening}, dispatch] = useStateValue()
 
     const [auth, setAuth] = useState(false || window.localStorage.getItem("auth") === "true")
 
@@ -42,7 +42,7 @@ const App = () => {
 
     return (
         <AnimatePresence mode="wait">
-            <div className="h-auto min-w-[680px] bg-primary flex justify-center items-center">
+            <div className="h-auto min-w-[680px] bg-primary flex justify-center items-center relative">
                 <Routes>
                     <Route path= '/login' element= {<Login setAuth = {setAuth} />} />
 
@@ -65,6 +65,17 @@ const App = () => {
                     className={`fixed min-w-[700px] h-28 inset-x-0 bottom-0 bg-cardOverlay drop-shadow-2xl backdrop-blur-md flex items-center justify-center`}
                     >
                         <MusicPlayer />
+                    </motion.div>
+                )}
+
+                {isAlbumOpening && (
+                    <motion.div
+                        initial={{opacity: 0, y: 50}}
+                        animate={{opacity: 1, y: 0}}
+                    // exit={{opacity: 0, y: 50}}
+                    className={`fixed min-w-[700px] h-225 inset-x-[25%] top-[20%] bg-cardOverlay drop-shadow-2xl backdrop-blur-md flex items-center justify-center`}
+                    >
+                        <AlbumPlayer />
                     </motion.div>
                 )}
             </div>

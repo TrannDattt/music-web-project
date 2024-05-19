@@ -41,3 +41,4 @@ export {default as FileLoader} from "../views/FileLoader"
 export {default as Arlert} from "../views/Arlert"
 
 export {default as MusicPlayer} from "../views/MusicPlayer"
+export {default as AlbumPlayer} from "../views/AlbumPlayer"

@@ -52,17 +52,18 @@ const MusicPlayer = () => {
             <div className='flex items-start flex-col'>
                 <p className='text-xl text-headingColor font-semibold'>
                     {`${
-                        allSongs[songIndex]?.name.length > 20
-                        ? allSongs[songIndex]?.name.slide(0,20)
+                        allSongs[songIndex]?.name.length > 10
+                        ? `${allSongs[songIndex]?.name.slice(0,10)}...`
                         : allSongs[songIndex]?.name
-                    }`}{" "}
-                    {allSongs[songIndex]?.albumName && (
-                        <span className='text-base'>{` - ${allSongs[songIndex]?.albumName}`}</span>
-                    )}
+                    }`}
                 </p>
 
                 <p className='text-textColor'>
-                    {allSongs[songIndex]?.artistName}{" "}
+                    {allSongs[songIndex]?.albumName && (
+                        <span className='text-base'>{`${allSongs[songIndex]?.albumName} - `}</span>
+                    )}{" "}
+
+                    {allSongs[songIndex]?.artistName}
                     {/* <p className='text-textColor text-sm font-semibold'>
                         ({allSongs[songIndex]?.category})
                     </p> */}

@@ -11,4 +11,6 @@ export const initialState = {
     arlertType: null,
     isSongPlaying: false,
     songIndex: 0,
+    isAlbumOpening: null,
+    albumIndex: 0,
 } 

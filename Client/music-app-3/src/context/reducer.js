@@ -17,6 +17,10 @@ export const actionType = {
     // Play song
     SET_IS_SONG_PLAYING: "SET_IS_SONG_PLAYING",
     SET_SONG_INDEX: "SET_SONG_INDEX",
+
+    // Open album
+    SET_IS_ALBUM_OPENING: "SET_IS_ALBUM_OPENING",
+    SET_ALBUM_INDEX: "SET_ALBUM_INDEX",
 }
 
 const reducer = (state, action) => {
@@ -92,6 +96,18 @@ const reducer = (state, action) => {
         return{
             ...state,
             songIndex: action.songIndex,
+        }
+
+        case actionType.SET_IS_ALBUM_OPENING:
+        return{
+            ...state,
+            isAlbumOpening: action.isAlbumOpening,
+        }
+
+        case actionType.SET_ALBUM_INDEX:
+        return{
+            ...state,
+            albumIndex: action.albumIndex,
         }
 
         default:

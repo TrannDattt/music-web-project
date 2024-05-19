@@ -14,7 +14,7 @@ const SongCard = ({data, index, type}) => {
   const [isDelete, setIsDelete] = useState(false)
   const [isAddToPlaylist, setIsAddToPlaylist] = useState(false)
   const [isFavorite, setIsFavorite] = useState(false)
-  const [{user, arlertType, allSongs, allAlbums, isSongPlaying, songIndex}, dispatch] = useStateValue()
+  const [{user, arlertType, allSongs, allAlbums, isSongPlaying, songIndex, isAlbumOpening, albumIndex}, dispatch] = useStateValue()
 
   const deleteData = (data) => {
     if (type === "song") {
@@ -101,6 +101,13 @@ const SongCard = ({data, index, type}) => {
   const addToContext = () => {
     switch (type) {
       case "song":
+        if(isAlbumOpening) {
+          dispatch({
+            type: actionType.SET_IS_ALBUM_OPENING,
+            isAlbumOpening: false,
+          })
+        }
+
         if(!isSongPlaying) {
           dispatch({
             type: actionType.SET_IS_SONG_PLAYING,
@@ -114,6 +121,30 @@ const SongCard = ({data, index, type}) => {
             songIndex: index,
           })
         }
+
+        break;
+
+      case "album":
+        if(isSongPlaying) {
+          dispatch({
+            type: actionType.SET_IS_SONG_PLAYING,
+            isSongPlaying: false,
+          })
+        }
+
+        if(!isAlbumOpening) {
+          dispatch({
+            type: actionType.SET_IS_ALBUM_OPENING,
+            isAlbumOpening: true,
+          })
+        }
+
+        if(albumIndex !== index) {
+          dispatch({
+            type: actionType.SET_ALBUM_INDEX,
+            albumIndex: index,
+          })
+        }  
 
         break;
     
@@ -143,21 +174,19 @@ const SongCard = ({data, index, type}) => {
       <p className='text-base text-headingColor font-semibold my-2 w-full px-4'>
         {data.name.length > 25 ? `${data.name.slice(0, 25)}...` : data.name}
 
-        {(type === "song" && data.albumName) && (
-          <span>{" - "}
-            <NavLink to={"/not-found"} className={`hover:underline text-sm`}>
+        <span className='block text-sm text-gray-400 my-1'>
+          {(type === "song" && data.albumName) && (
+            <><NavLink to={"/not-found"} className={`hover:underline`}>
               {data.albumName.length > 25 ? `${data.albumName.slice(0, 25)}...` : `${data.albumName}`}
-            </NavLink>
-          </span>
-        )}
-        
-        <NavLink to={"/not-found"} className={`hover:underline`}>
-          {data.artistName && (
-            <span className='block text-sm text-gray-400 my-1'>
-              {data.artistName.length > 25 ? `${data.artistName.slice(0, 25)}...` : data.artistName}
-            </span>
+            </NavLink>{" - "}</>
           )}
-        </NavLink>
+          
+          {data.artistName && (
+            <NavLink to={"/not-found"} className={`hover:underline text-sm`}>
+              {data.artistName.length > 25 ? `${data.artistName.slice(0, 25)}...` : data.artistName}
+            </NavLink>
+          )}
+        </span>
       </p>
 
       {/* Add funtion to the buttons */}
