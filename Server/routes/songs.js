@@ -77,6 +77,18 @@ router.get("/getAllByTimeCreated", async (req, res) => {
     }
 })
 
+router.get("/getAllByAlbumId/:id", async (req, res) => {
+    const filter = {albumId: req.params.id}
+
+    try {
+        const data = await song.find(filter)
+
+        return res.status(200).send({success : true, song : data})
+    } catch (error) {
+        return res.status(400).send({success : false, message : "Data not found."})
+    }
+})
+
 router.put("/update/:id", async (req, res) => {
     const filter = {_id: req.params.id}
     const options = {

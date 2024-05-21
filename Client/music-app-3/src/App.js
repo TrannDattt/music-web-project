@@ -13,7 +13,7 @@ const App = () => {
     const firebaseAuth = getAuth(app)
     const navigate = useNavigate()
 
-    const [{user, isSongPlaying, isAlbumOpening}, dispatch] = useStateValue()
+    const [{user, allSongs, isSongPlaying, isAlbumOpening, musicInAlbum}, dispatch] = useStateValue()
 
     const [auth, setAuth] = useState(false || window.localStorage.getItem("auth") === "true")
 
@@ -65,6 +65,7 @@ const App = () => {
                     className={`fixed min-w-[700px] h-28 inset-x-0 bottom-0 bg-cardOverlay drop-shadow-2xl backdrop-blur-md flex items-center justify-center`}
                     >
                         <MusicPlayer />
+                        {/* <MusicPlayer songData={musicInAlbum ? musicInAlbum : allSongs} /> */}
                     </motion.div>
                 )}
 
@@ -73,7 +74,7 @@ const App = () => {
                         initial={{opacity: 0, y: 50}}
                         animate={{opacity: 1, y: 0}}
                     // exit={{opacity: 0, y: 50}}
-                    className={`fixed min-w-[700px] h-225 inset-x-[25%] top-[20%] bg-cardOverlay drop-shadow-2xl backdrop-blur-md flex items-center justify-center`}
+                    className={`fixed min-w-[700px] h-fit inset-x-80 inset-y-32 bg-cardOverlay rounded-md drop-shadow-2xl backdrop-blur-md`}
                     >
                         <AlbumPlayer />
                     </motion.div>

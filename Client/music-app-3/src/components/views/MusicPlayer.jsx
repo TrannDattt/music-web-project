@@ -10,6 +10,102 @@ import { actionType } from '../../context/reducer'
 import { getAllSongs } from '../../api'
 import { MdReport } from 'react-icons/md'
 
+// const MusicPlayer = (songData) => {
+//     const [{isSongPlaying, songIndex}, dispatch] = useStateValue()
+//     const [isPlaylist, setIsPlaylist] = useState(false)
+
+//     const nextTrack = () => {
+//         dispatch({
+//             type: actionType.SET_SONG_INDEX,
+//             songIndex: songIndex === (songData.length - 1) ? 0 : songIndex + 1,
+//         })
+//     }
+
+//     const previousTrack = () => {
+//         dispatch({
+//             type: actionType.SET_SONG_INDEX,
+//             songIndex: songIndex === 0 ? songData.length - 1 : songIndex - 1,
+//         })
+//     }
+
+//     const closePlayer = () => {
+//         dispatch({
+//             type: actionType.SET_IS_SONG_PLAYING,
+//             isSongPlaying: false,
+//         })
+//     }
+
+//     // Add
+//     const reportSong = () => {
+    
+//     }
+
+//   return (
+//     <div className='flex w-full gap-3 items-center overflow-hidden'>
+//         <div className={`w-full gap-3 p-4 flex items-center relative`}>
+//             <img 
+//                 src={songData[songIndex]?.imageURL}
+//                 alt=''
+//                 className='w-40 h-24 rounded-md object-cover'
+//             />
+
+//             <div className='flex items-start flex-col'>
+//                 <p className='text-xl text-headingColor font-semibold'>
+//                     {`${
+//                         songData[songIndex]?.name.length > 10
+//                         ? `${songData[songIndex]?.name.slice(0,10)}...`
+//                         : songData[songIndex]?.name
+//                     }`}
+//                 </p>
+
+//                 <p className='text-textColor'>
+//                     {songData[songIndex]?.albumName && (
+//                         <span className='text-base'>{`${songData[songIndex]?.albumName} - `}</span>
+//                     )}{" "}
+
+//                     {songData[songIndex]?.artistName}
+//                     {/* <p className='text-textColor text-sm font-semibold'>
+//                         ({songData[songIndex]?.category})
+//                     </p> */}
+//                 </p>
+
+//                 <motion.i 
+//                     whileTap={{scale: 0.8}}
+//                     whileHover={{scale: 1.1}}
+//                     onClick={() => setIsPlaylist(!isPlaylist)}
+//                 >
+//                     <RiPlayListFill className='text-textColor hover:text-headingColor text-xl' />
+//                 </motion.i>
+//             </div>
+
+//             <AudioPlayer 
+//                 src={songData[songIndex]?.songURL}
+//                 onPlay={() => console.log("is playing...")}
+//                 autoPlay={true}
+//                 showSkipControls={true}
+//                 onClickNext={() => nextTrack()}
+//                 onClickPrevious={() => previousTrack()}
+//             />
+
+//         </div>
+
+//         {isPlaylist && (<PlaylistCard />) }
+        
+//         <div className='h-full flex flex-col p-1 gap-4 text-gray-600'>
+//             <IoClose className='hover:border-2 text-2xl' onClick={() => closePlayer()} />
+
+//             <motion.i 
+//                 whileTap={{scale: 0.8}}
+//                 whileHover={{scale: 1.1}}
+//                 onClick={() => reportSong()}
+//             >
+//                 <MdReport className='text-textColor hover:text-headingColor text-2xl my-2' onClick={() => reportSong()} />
+//             </motion.i>
+//         </div>
+//     </div>
+//   )
+// }
+
 const MusicPlayer = () => {
     const [{allSongs, isSongPlaying, songIndex}, dispatch] = useStateValue()
     const [isPlaylist, setIsPlaylist] = useState(false)
@@ -70,8 +166,8 @@ const MusicPlayer = () => {
                 </p>
 
                 <motion.i 
-                    whileTap={{scale: 0.75}}
-                    whileHover={{scale: 1.2}}
+                    whileTap={{scale: 0.8}}
+                    whileHover={{scale: 1.1}}
                     onClick={() => setIsPlaylist(!isPlaylist)}
                 >
                     <RiPlayListFill className='text-textColor hover:text-headingColor text-xl' />
@@ -95,8 +191,8 @@ const MusicPlayer = () => {
             <IoClose className='hover:border-2 text-2xl' onClick={() => closePlayer()} />
 
             <motion.i 
-                whileTap={{scale: 0.75}}
-                whileHover={{scale: 1.2}}
+                whileTap={{scale: 0.8}}
+                whileHover={{scale: 1.1}}
                 onClick={() => reportSong()}
             >
                 <MdReport className='text-textColor hover:text-headingColor text-2xl my-2' onClick={() => reportSong()} />

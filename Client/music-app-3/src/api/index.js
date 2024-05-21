@@ -98,7 +98,7 @@ export const changeUserRole = async (userId, role) => {
 
 export const getUserById = async (userId) => {
     try {
-        const res = await axios.put(`${baseURL}/api/users/getOne/${userId}`)
+        const res = await axios.get(`${baseURL}/api/users/getOne/${userId}`)
         return res
     } catch (error) {
         return null
@@ -127,6 +127,15 @@ export const saveNewSong = async (data) => {
     try {
         const res = axios.post(`${baseURL}/api/songs/save`, {...data})
         return (await res).data.savedSong
+    } catch (error) {
+        return null
+    }
+}
+
+export const getSongByAlbumId = async (id) => {
+    try {
+        const res = await axios.get(`${baseURL}/api/songs/getAllByAlbumId/${id}`)
+        return res.data
     } catch (error) {
         return null
     }

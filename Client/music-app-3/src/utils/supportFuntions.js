@@ -12,3 +12,15 @@ export const filterByLang = [
     {_id: 4, name: "Korean", value: "korean"},
     {_id: 5, name: "Japanese", value: "japanese"},
 ]
+
+export const addToPlaylist = ({type, data}) => {
+
+}
+
+export const like = ({type, data}) => {
+
+}
+
+export const report = ({type, data}) => {
+    
+}

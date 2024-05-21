@@ -197,16 +197,16 @@ const SongCard = ({data, index, type}) => {
           </p>
 
           <motion.i 
-          whileTap={{scale: 0.75}}
-          whileHover={{scale: 1.2}}
+          whileTap={{scale: 0.8}}
+          whileHover={{scale: 1.1}}
           onClick={() => setIsFavorite(!isFavorite)}
           >
               {isFavorite ? <FaHeart className='text-textColor hover:text-headingColor text-2xl' /> : <FaRegHeart className='text-textColor hover:text-headingColor text-2xl' />}
           </motion.i>
 
           <motion.i 
-              whileTap={{scale: 0.75}}
-              whileHover={{scale: 1.2}}
+              whileTap={{scale: 0.8}}
+              whileHover={{scale: 1.1}}
               onClick={() => setIsAddToPlaylist(!isAddToPlaylist)}
           >
               {!isAddToPlaylist ? <MdPlaylistAdd className='text-textColor hover:text-headingColor text-2xl' /> : <MdPlaylistAddCheck className='text-textColor hover:text-headingColor text-2xl' />}
@@ -217,7 +217,7 @@ const SongCard = ({data, index, type}) => {
       {user?.user?.role === "admin" && (
         <div className='absolute bottom-2 right-2 flex items-center justify-between'>
           <motion.i 
-            whileTap={{scale: 0.75}}
+            whileTap={{scale: 0.8}}
             className='text-xl drop-shadow-md text-red-400 hover:text-red-600'
             onClick={() => setIsDelete(true)}
           >
@@ -236,13 +236,13 @@ const SongCard = ({data, index, type}) => {
           <div className='flex items-center gap-4'>
             <motion.button 
               className='px-2 py-1 text-sm uppercase bg-red-500 hover:bg-red-600 cursor-pointer rounded-md font-semibold'
-              whileTap={{scale: 0.75}}
+              whileTap={{scale: 0.8}}
               onClick={() => deleteData(data)}
             >Yes</motion.button>
 
             <motion.button 
               className='px-2 py-1 text-sm uppercase bg-white hover:bg-gray-300 cursor-pointer rounded-md font-semibold'
-              whileTap={{scale: 0.75}}
+              whileTap={{scale: 0.8}}
               onClick={() => setIsDelete(false)}
             >No</motion.button>
           </div>

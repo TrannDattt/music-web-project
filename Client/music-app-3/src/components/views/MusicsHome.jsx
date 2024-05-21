@@ -16,7 +16,7 @@ const MusicsHome = () => {
                   type: actionType.SET_ALL_SONGS,
                   allSongs: data.song,
               })
-              console.log(data)
+              // console.log(data)
           })
       }
   }, [])

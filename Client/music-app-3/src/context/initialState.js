@@ -13,4 +13,5 @@ export const initialState = {
     songIndex: 0,
     isAlbumOpening: null,
     albumIndex: 0,
+    musicInAlbum: null,
 } 

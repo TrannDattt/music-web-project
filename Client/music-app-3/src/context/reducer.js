@@ -21,6 +21,7 @@ export const actionType = {
     // Open album
     SET_IS_ALBUM_OPENING: "SET_IS_ALBUM_OPENING",
     SET_ALBUM_INDEX: "SET_ALBUM_INDEX",
+    SET_MUSIC_IN_ALBUM: "SET_MUSIC_IN_ALBUM",
 }
 
 const reducer = (state, action) => {
@@ -108,6 +109,12 @@ const reducer = (state, action) => {
         return{
             ...state,
             albumIndex: action.albumIndex,
+        }
+
+        case actionType.SET_MUSIC_IN_ALBUM:
+        return{
+            ...state,
+            musicInAlbum: action.musicInAlbum,
         }
 
         default:
