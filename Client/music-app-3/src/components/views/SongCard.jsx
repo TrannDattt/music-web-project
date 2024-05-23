@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
 import {motion} from 'framer-motion'
-import { IoTrash } from 'react-icons/io5'
+import { IoEye, IoTrash } from 'react-icons/io5'
 import { deleteAlbumById, deleteSongById, getAllAlbums, getAllSongs } from '../../api'
 import { useStateValue } from '../../context/StateProvider'
 import { actionType } from '../../context/reducer'
 import { deleteObject, ref } from 'firebase/storage'
 import { storage } from '../../config/firebase.config'
-import { MdPlaylistAdd, MdPlaylistAddCheck } from 'react-icons/md'
+import { MdPlaylistAdd, MdPlaylistAddCheck, MdReport } from 'react-icons/md'
 import { FaHeart, FaRegHeart } from 'react-icons/fa'
 import { NavLink } from 'react-router-dom'
 
@@ -192,24 +192,30 @@ const SongCard = ({data, index, type}) => {
       {/* Add funtion to the buttons */}
       {(user?.user?.role === "member" && (type === "song" || "album")) && (
         <div className='absolute bottom-2 gap-2 right-2 flex items-center justify-between'>
-          <p className='text-xs text-headingColor font-semibold'>
-            {`${data.viewCount} `} views
-          </p>
+          <i
+          className='flex flex-row px-2'
+          >
+            <IoEye className='text-textColor text-xl' />
+
+            <span className='text-xs text-headingColor font-semibold italic px-1'>{` ${data.likeCount} likes`}</span>
+          </i>
 
           <motion.i 
           whileTap={{scale: 0.8}}
           whileHover={{scale: 1.1}}
           onClick={() => setIsFavorite(!isFavorite)}
+          className='flex flex-row px-2'
           >
-              {isFavorite ? <FaHeart className='text-textColor hover:text-headingColor text-2xl' /> : <FaRegHeart className='text-textColor hover:text-headingColor text-2xl' />}
+            {isFavorite ? <FaHeart className='text-textColor hover:text-headingColor text-xl' /> : <FaRegHeart className='text-textColor hover:text-headingColor text-xl' />}
+
+            <span className='text-xs text-headingColor font-semibold italic px-1'>{` ${data.likeCount} likes`}</span>
           </motion.i>
 
           <motion.i 
               whileTap={{scale: 0.8}}
               whileHover={{scale: 1.1}}
-              onClick={() => setIsAddToPlaylist(!isAddToPlaylist)}
           >
-              {!isAddToPlaylist ? <MdPlaylistAdd className='text-textColor hover:text-headingColor text-2xl' /> : <MdPlaylistAddCheck className='text-textColor hover:text-headingColor text-2xl' />}
+            <MdReport className='text-textColor hover:text-headingColor text-xl' onClick={''} />
           </motion.i>
         </div>
       )}

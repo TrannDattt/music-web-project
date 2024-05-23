@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import {Route, Routes, useNavigate} from "react-router-dom"
-import { Login, Home, Dashboard, MusicPlayer, Musics, ContactUs, Premium, NotFound, Albums, AlbumPlayer } from "./components/js"
+import { Login, Home, Dashboard, MusicPlayer, Musics, ContactUs, Premium, NotFound, Albums, AlbumPlayer, Reports } from "./components/js"
 import { app } from "./config/firebase.config"
 import { getAuth } from "firebase/auth";
 
@@ -53,6 +53,7 @@ const App = () => {
                     <Route path="/contact-us" element={<ContactUs />} />
 
                     <Route path="/dashboard/*" element= {<Dashboard />} />
+                    <Route path="/reports/*" element={<Reports />} />
 
                     {/* <Route path="/*" element= {<NotFound />} /> */}
                 </Routes>
@@ -64,8 +65,8 @@ const App = () => {
                     // exit={{opacity: 0, y: 50}}
                     className={`fixed min-w-[700px] h-28 inset-x-0 bottom-0 bg-cardOverlay drop-shadow-2xl backdrop-blur-md flex items-center justify-center`}
                     >
-                        <MusicPlayer />
-                        {/* <MusicPlayer songData={musicInAlbum ? musicInAlbum : allSongs} /> */}
+                        {/* <MusicPlayer /> */}
+                        <MusicPlayer songData={musicInAlbum ? musicInAlbum : allSongs} />
                     </motion.div>
                 )}
 

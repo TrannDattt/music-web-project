@@ -26,6 +26,11 @@ const albumSchema = mongoose.Schema({
         required: true,
         default: 0,
     },
+    likeCount: {
+        type: Number,
+        required: true,
+        default: 0,
+    },
 }, {timestamps: true}
 )
 

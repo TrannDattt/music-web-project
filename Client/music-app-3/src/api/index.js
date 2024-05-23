@@ -176,3 +176,11 @@ export const deleteAlbumById = async (id) => {
         return null
     }
 }
+
+// export const updateAllSong = async => {
+//     try {
+//         const res = axios.put(`${baseURL}/api/songs/updateAll`)
+//     } catch (error) {
+//         return null
+//     }
+// }

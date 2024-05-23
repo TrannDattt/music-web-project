@@ -42,3 +42,7 @@ export {default as Arlert} from "../views/Arlert"
 
 export {default as MusicPlayer} from "../views/MusicPlayer"
 export {default as AlbumPlayer} from "../views/AlbumPlayer"
+
+export {default as Reports} from "../views/Reports"
+export {default as ReportsMusic} from "../views/ReportsMusic"
+export {default as ReportsAlbum} from "../views/ReportsAlbum"

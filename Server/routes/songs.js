@@ -16,6 +16,7 @@ router.post("/save", async (req, res) => {
         language: req.body.language,
         category: req.body.category,
         viewCount: 0,
+        likeCount: 0,
     })
 
     try {
@@ -108,6 +109,7 @@ router.put("/update/:id", async (req, res) => {
             language: req.body.language,
             category: req.body.category,
             viewCount: req.body.viewCount,
+            likeCount: req.body.likeCount,
         }, options)
 
         return res.status(200).send({success: true, data: result})
@@ -126,5 +128,18 @@ router.delete("/delete/:id", async (req, res) => {
         return res.status(400).send({success : false, message : "Data not found."})
     }
 })
+
+// router.put("/updateAll", async (req, res) => {
+//     const result = await song.updateMany(
+//         {},
+//         { $set: { likeCount: 0 }},
+//     )
+
+//     if(result) {
+//         return res.status(200).send({success : true, message : "Data deleted successfully", data : result})
+//     } else {
+//         return res.status(400).send({success : false, message : "Data not found."})
+//     }
+// })
 
 module.exports = router

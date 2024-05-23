@@ -10,6 +10,7 @@ router.post("/save", async (req, res) => {
         artistName: req.body.artistName,
         language: req.body.language,
         viewCount: 0,
+        likeCount: 0,
     })
 
     try {
@@ -86,6 +87,7 @@ router.put("/update/:id", async (req, res) => {
             artistName: req.body.artistName,
             language: req.body.language,
             viewCount: req.body.viewCount,
+            likeCount: req.body.likeCount,
         }, options)
 
         return res.status(200).send({success: true, data: result})

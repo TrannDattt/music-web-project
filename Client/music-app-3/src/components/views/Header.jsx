@@ -43,7 +43,7 @@ const Header = () => {
 
   return (
     <header className='flex items-center w-full p-4  md:py-0 md:px-6 bg-slate-950'>
-        <NavLink to={"/"} >
+        <NavLink to={"/"}>
             <img src={Logo} alt='Logo' className='w-16' />
         </NavLink>
 
@@ -101,6 +101,10 @@ const Header = () => {
                         <>
                             <NavLink to={'/dashboard/home'}>
                                 <p className='text-base text-textColor hover:font-semibold duration-150 transition-all ease-in-out'>Dashboard</p>
+                            </NavLink>
+
+                            <NavLink to={'/reports/music'}>
+                                <p className='text-base text-textColor hover:font-semibold duration-150 transition-all ease-in-out'>Reports</p>
                             </NavLink>
 
                             <hr />

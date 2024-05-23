@@ -70,6 +70,17 @@ const updateNewUserData = async(decodeValue, req, res) => {
     }
 }
 
+router.get("/getOne/:userId", async (req, res) => {
+    const filter = {_id: req.params.userId}
+    const data = await user.findOne(filter)
+
+    if(data) {
+        return res.status(200).send({success : true, data : data})
+    } else {
+        return res.status(400).send({success : false, message : "Data not found."})
+    }
+})
+
 router.get("/getAllUsers", async (req, res) => {
     const options = {
         name: 1,

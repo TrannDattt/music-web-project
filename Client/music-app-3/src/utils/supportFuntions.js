@@ -22,5 +22,8 @@ export const like = ({type, data}) => {
 }
 
 export const report = ({type, data}) => {
+    // const [albumReported, setAlbumReported] = useState(null)
+    // const [songReported, setSongReported] = useState(null)
+
     
 }
