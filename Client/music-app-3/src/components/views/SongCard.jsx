@@ -12,7 +12,7 @@ import { NavLink } from 'react-router-dom'
 
 const SongCard = ({data, index, type}) => {
   const [isDelete, setIsDelete] = useState(false)
-  const [isAddToPlaylist, setIsAddToPlaylist] = useState(false)
+  const [isLiked, setIsLiked] = useState(false)
   const [isFavorite, setIsFavorite] = useState(false)
   const [{user, arlertType, allSongs, allAlbums, isSongPlaying, songIndex, isAlbumOpening, albumIndex}, dispatch] = useStateValue()
 
@@ -153,15 +153,18 @@ const SongCard = ({data, index, type}) => {
     }
   }
 
+  const report = () => {
+
+  }
+
   return (
     <motion.div 
       initial={{opacity: 0, translateY: 50}}
       animate={{opacity: 1, translateY: 0}}
       transition={{duration: 0.3, delay: index * 0.1}}
       className='relative w-40 min-w-210 px-2 py-4 cursor-pointer hover:bg-card bg-gray-100 shadow-md rounded-lg flex flex-col items-center'
-      onClick={addToContext}
     >
-      <div className='w-40 min-w-[160px] h-40 min-h-[160px] rounded-lg drop-shadow-lg relative overflow-hidden'>
+      <div className='w-40 min-w-[160px] h-40 min-h-[160px] rounded-lg drop-shadow-lg relative overflow-hidden' onClick={addToContext}>
           <motion.img
           whileHover={{scale: 1.05}}
               src={data.imageURL}
@@ -172,7 +175,7 @@ const SongCard = ({data, index, type}) => {
       {/* Link to artist personal info page */}
       
       <p className='text-base text-headingColor font-semibold my-2 w-full px-4'>
-        {data.name.length > 25 ? `${data.name.slice(0, 25)}...` : data.name}
+        <span className='hover:underline' onClick={addToContext}>{data.name.length > 25 ? `${data.name.slice(0, 25)}...` : data.name}</span>
 
         <span className='block text-sm text-gray-400 my-1'>
           {(type === "song" && data.albumName) && (
@@ -197,16 +200,19 @@ const SongCard = ({data, index, type}) => {
           >
             <IoEye className='text-textColor text-xl' />
 
-            <span className='text-xs text-headingColor font-semibold italic px-1'>{` ${data.likeCount} likes`}</span>
+            <span className='text-xs text-headingColor font-semibold italic px-1'>{` ${data.viewCount} views`}</span>
           </i>
 
           <motion.i 
           whileTap={{scale: 0.8}}
           whileHover={{scale: 1.1}}
-          onClick={() => setIsFavorite(!isFavorite)}
+          onClick={() => {
+            setIsLiked(!isLiked)
+            isLiked ? data.likeCount-- : data.likeCount++
+          }}
           className='flex flex-row px-2'
           >
-            {isFavorite ? <FaHeart className='text-textColor hover:text-headingColor text-xl' /> : <FaRegHeart className='text-textColor hover:text-headingColor text-xl' />}
+            {isLiked ? <FaHeart className='text-textColor hover:text-headingColor text-xl' /> : <FaRegHeart className='text-textColor hover:text-headingColor text-xl' />}
 
             <span className='text-xs text-headingColor font-semibold italic px-1'>{` ${data.likeCount} likes`}</span>
           </motion.i>
@@ -215,7 +221,7 @@ const SongCard = ({data, index, type}) => {
               whileTap={{scale: 0.8}}
               whileHover={{scale: 1.1}}
           >
-            <MdReport className='text-textColor hover:text-headingColor text-xl' onClick={''} />
+            <MdReport className='text-textColor hover:text-headingColor text-xl' onClick={report} />
           </motion.i>
         </div>
       )}

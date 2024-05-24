@@ -11,7 +11,7 @@ import { report } from '../../utils/supportFuntions'
 
 const AlbumPlayer = () => {
     const [{allSongs, allAlbums, isAlbumOpening, albumIndex, musicInAlbum}, dispatch] = useStateValue()
-    const [isLike, setIsLike] = useState(false)
+    const [isLiked, setIsLiked] = useState(false)
     const [isFavorite, setIsFavorite] = useState(false)
 
     useEffect(() => {
@@ -60,32 +60,6 @@ const AlbumPlayer = () => {
             <span className='text-3xl py-2'>{allAlbums[albumIndex]?.name}</span>
             <span className='block text-xl py-2 text-gray-500'>{allAlbums[albumIndex]?.artistName}</span>
           </p>
-
-          <div className='flex flex-row pl-40 pt-16'>
-            <i className='flex flex-row px-3'>
-              <IoEye className='text-textColor text-2xl' />
-
-              <span className='text-xs text-headingColor font-semibold italic px-1'>{` ${allAlbums[albumIndex]?.likeCount} likes`}</span>
-            </i>
-
-            <motion.i 
-            whileTap={{scale: 0.8}}
-            whileHover={{scale: 1.1}}
-            onClick={() => setIsFavorite(!isFavorite)}
-            className='flex flex-row px-3'
-            >
-              {isFavorite ? <FaHeart className='text-textColor hover:text-headingColor text-2xl' /> : <FaRegHeart className='text-textColor hover:text-headingColor text-2xl' />}
-
-              <span className='text-xs text-headingColor font-semibold italic px-1'>{` ${allAlbums[albumIndex]?.likeCount} likes`}</span>
-            </motion.i>
-
-            <motion.i 
-                whileTap={{scale: 0.8}}
-                whileHover={{scale: 1.1}}
-            >
-              <MdReport className='text-textColor hover:text-headingColor text-2xl' onClick={''} />
-            </motion.i>
-          </div>
         </div>
 
         <IoClose

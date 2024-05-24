@@ -25,14 +25,6 @@ const Albums = () => {
         <NavLink to={"/albums/new-release"} className={({isActive}) => isActive ? isActiveStyles : isNotActiveStyles}>
           New Released
         </NavLink>
-
-        {/* <NavLink to={"/musics/songs"} className={({isActive}) => isActive ? isActiveStyles : isNotActiveStyles}>
-          Songs
-        </NavLink>
-        
-        <NavLink to={"/musics/albums"} className={({isActive}) => isActive ? isActiveStyles : isNotActiveStyles}>
-          Albums
-        </NavLink> */}
       </div>
 
       <div className='my-4 w-full p-4'>
@@ -40,11 +32,6 @@ const Albums = () => {
           <Route path='/home' element={<AlbumsHome />} />
           <Route path='/hot' element={<AlbumsHot />} />
           <Route path='/new-release' element={<AlbumsNewRelease />} />
-          {/* <Route path='/songs' element={<DashboardSongs />} />
-          <Route path='/albums' element={<DashboardAlbums />} />
-          <Route path='/new-song' element={<NewSong />} />
-          <Route path='/new-artist' element={<NewArtist />} />
-          <Route path='/new-album' element={<newAlbum />} /> */}
         </Routes>
       </div>
     </div>
